@@ -2,3 +2,19 @@
 
 <h2><%= @user.name %>'s Posts</h2>
 
+<% @user.posts.each do |post| %>
+<div class="post">
+<p><%= post.body %></br>
+time <%= post.created_at %>
+
+ip <%= post.IP %></br>
+
+all <%= geo = Geocoder.search(post.IP) %></br>
+
+<% if geo.size > 0 %>
+lat <%= geo.first.latitude  %></br>
+long <%= geo.first.longitude  %></br>
+<% end %> 
+</p>
+</div>
+<% end -%>

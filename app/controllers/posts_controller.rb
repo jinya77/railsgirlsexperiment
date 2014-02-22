@@ -10,6 +10,10 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params[:post])
+    @post.IP = request.remote_ip
+
+
+    
     if @post.save
       redirect_to user_path(@post.user)
     else
